@@ -6,9 +6,14 @@
 </head>
 <body>
 This is the {{ game_name }} Page.
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
 <br> <a href="{% url 'index' %}">GOTO index</a>
-<br> <a href="{% url 'login' %}">GOTO login</a>
-<br> <a href="{% url 'logout' %}">GOTO logout</a>
 <br> <a href="{% url 'game1' %}">GOTO Game1</a>
 <br> <a href="{% url 'game2' %}">GOTO Game2</a>
 <br> <a href="{% url 'game3' %}">GOTO Game3</a>
