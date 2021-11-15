@@ -11,30 +11,32 @@ def index(request):
     return render(request, 'Games/index.html')
 
 
-def game_render(request, game_name):
+def game_render(request, game_name, game_html):
     scoreboard_sorted = Scores.objects.filter(game=game_name).order_by('-score')
     scoreboard_top10 = scoreboard_sorted[:10]
     if request.user.is_authenticated:
         user_scores = scoreboard_sorted.filter(user=request.user)[:10]
     else:
         user_scores = []
-    context = {'game_name': game_name, 'scoreboard': scoreboard_top10, 'user_scores': user_scores}
+    context = {'game_name': game_name, 'scoreboard': scoreboard_top10, 'user_scores': user_scores, 'game_html': game_html}
     return render(request, 'Games/game_template.html', context)
 
 
 def game1(request):
     game_name = 'Snake'
-    return game_render(request, game_name)
+    game_html = 'Games/snake_test.html'
+    return game_render(request, game_name, game_html)
 
 
 def game2(request):
     game_name = 'Flappy_Bird'
-    return game_render(request, game_name)
+    game_html = 'Games/flappy_test.html'
+    return game_render(request, game_name, game_html)
 
 
 def game3(request):
     game_name = 'Blank'
-    return game_render(request, game_name)
+    return game_render(request, game_name, game_html)
 
 
 def register_request(request):
