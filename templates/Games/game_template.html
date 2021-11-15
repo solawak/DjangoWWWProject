@@ -5,19 +5,63 @@
     <title>Title</title>
 </head>
 <body>
-This is the {{ game_name }} Page.
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-  <p>You are not logged in.</p>
-  <a href="{% url 'login' %}">Log In</a>
-    <a href="{% url 'register' %}">Register</a>
-{% endif %}
-<br>
-<br> <a href="{% url 'index' %}">GOTO index</a>
-<br> <a href="{% url 'game1' %}">GOTO Game1</a>
-<br> <a href="{% url 'game2' %}">GOTO Game2</a>
-<br> <a href="{% url 'game3' %}">GOTO Game3</a>
+    This is the {{ game_name }} Page.
+    {% if user.is_authenticated %}
+        Hi {{ user.username }}!
+        <p><a href="{% url 'logout' %}">Log Out</a></p>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+    <br>
+    <br> <a href="{% url 'index' %}">GOTO index</a>
+    <br> <a href="{% url 'game1' %}">GOTO Game1</a>
+    <br> <a href="{% url 'game2' %}">GOTO Game2</a>
+    <br> <a href="{% url 'game3' %}">GOTO Game3</a>
+
+    <div>
+        {% if scoreboard|length > 0 %}
+            <table>
+            <tr>
+            <th></th>
+            <th>User</th>
+            <th>Score</th>
+            </tr>
+        {% for tmp_score in scoreboard %}
+            <tr>
+                <td>{{ forloop.counter0|add:1 }}</td>
+                <td>{{ tmp_score.user}}</td>
+                <td>{{ tmp_score.score }}</td>
+            </tr>
+        {% endfor %}</table>
+            {% else %}
+            <p>No game data available</p>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if user.is_authenticated %}
+        {% if user_scores|length > 0 %}
+            <table>
+            <tr>
+            <th></th>
+            <th>User</th>
+            <th>Score</th>
+            </tr>
+        {% for tmp_score in user_scores %}
+            <tr>
+                <td>{{ forloop.counter0|add:1 }}</td>
+                <td>{{ tmp_score.user}}</td>
+                <td>{{ tmp_score.score }}</td>
+            </tr>
+        {% endfor %}</table>
+        {% else %}
+            <p>No user data available</p>
+        {% endif %}
+        {% else %}
+            <p><a href="{% url 'login' %}">Log In</a> to see your scoreboard.</p>
+        {% endif %}
+    </div>
 </body>
 </html>
