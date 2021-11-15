@@ -48,3 +48,10 @@ def register_request(request):
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = UserCreationForm()
     return render(request=request, template_name="Games/register.html", context={"register_form": form})
+
+
+def temp_snake(request):
+    return render(request, 'Games/snake.html')
+
+def temp_flap(request):
+    return render(request, 'Games/flappy.html')
