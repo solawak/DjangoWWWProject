@@ -9,16 +9,18 @@
 	<body>
 		<div id="score">0</div>
 		<canvas id="snakeboard" width="400" height="400"></canvas>
-		<a href="index.html">Go Back</a>
-    <div>
-			<form name="snake_form">
-				<label for="scoreform">Score:</label><br>
-				<input type="text" id="scoreform" name="scoreform" value="0" readonly="readonly" width="10" height="20"><br>
-				<label for="nickname">Nickname:</label><br>
-				<input type="text" id="nickname" name="nickname" value={{ user.username }}>
-				<input type="submit" value="Submit">
-			</form>
-		</div>
+		<a href="{% url 'index' %}">GOTO index</a>
+
+    <div class="container">
+    <form method="POST">
+      <fieldset>
+        <legend>Form</legend>
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Submit score</button>
+      </fieldset>
+    </form>
+</div>
 	</body>
 	{%  load static %}
     <script src="{% static 'Games/snake.js' %}"></script>

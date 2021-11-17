@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Scores
+from .forms import GameForm
 from django.http import HttpResponse
 
 
@@ -36,6 +37,7 @@ def game2(request):
 
 def game3(request):
     game_name = 'Blank'
+    game_html = 'Games/flappy_test.html'
     return game_render(request, game_name, game_html)
 
 
@@ -55,5 +57,20 @@ def register_request(request):
 def temp_snake(request):
     return render(request, 'Games/snake.html')
 
+
 def temp_flap(request):
     return render(request, 'Games/flappy.html')
+
+
+def game_form(request):
+    if request.method == "POST":
+        form = GameForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.game = 'Snake'
+            instance.save()
+    else:
+        form = GameForm(initial={"user": request.user, "score": 0, "game": "Snake"})
+        form.fields['score'].widget.attrs['readonly'] = True
+    return render(request, 'Games/snake.html', {'form': form})
