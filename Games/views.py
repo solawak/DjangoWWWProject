@@ -22,6 +22,7 @@ def game_render(request, game_name, game_html):
                'game_html': game_html, 'form': process_form(request, game_name)}
     return render(request, 'Games/game_template.html', context)
 
+
 def process_form(request, game_name):
     if request.method == "POST":
         form = GameForm(request.POST)
@@ -37,7 +38,7 @@ def process_form(request, game_name):
 
 def snake_render(request):
     game_name = 'Snake'
-    game_html = 'Games/snake_test.html'
+    game_html = 'Games/snake.html'
     return game_render(request, game_name, game_html)
 
 

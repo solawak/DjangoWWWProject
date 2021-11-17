@@ -32,7 +32,10 @@
 
     gen_food();
 
-    document.addEventListener("keydown", change_direction);
+    document.addEventListener("keydown", function(event){
+        change_direction(event);
+        event.preventDefault();
+    });
     
     // main function called repeatedly to keep the game running
     function main() {

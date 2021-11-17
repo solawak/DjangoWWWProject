@@ -9,5 +9,4 @@ urlpatterns = [
     path('game3/', views.game3, name="game3"),
     path('register/', views.register_request, name='register'),
     path('flappy/', views.temp_flap, name='temp_flappy'),
-    path('temp_snake/', views.temp_snake, name='temp_snake'),
 ]

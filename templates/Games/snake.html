@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html>
-	<head>
-	<title>Snake Game</title>
-	    {%  load static %}
-     <link rel="stylesheet" href="{% static 'Games/snake_style.css' %}">
-	</head>
-
-	<body>
-		<div id="score">0</div>
-		<canvas id="snakeboard" width="400" height="400"></canvas>
-		<a href="{% url 'index' %}">GOTO index</a>
-
+<div id="score">0</div>
+<canvas id="snakeboard" width="480" height="400"></canvas>
     <div class="container">
-    <form method="POST">
-      <fieldset>
-        {% csrf_token %}
-        {{ form.score.as_hidden }}
-          {% if user.is_authenticated %}
-        <button type="submit" class="btn btn-primary">Submit your score</button>
-          {% else %}
-          <button type="submit" class="btn btn-primary" disabled>Log in to submit your score</button>
-          {% endif %}
-      </fieldset>
-    </form>
-</div>
-	</body>
-	{%  load static %}
-    <script src="{% static 'Games/snake.js' %}"></script>
-
-</html>
+        <form method="POST">
+          <fieldset>
+              {% if user.is_authenticated %}
+                  {% csrf_token %}
+                  {{ form.score.as_hidden }}
+                  <button type="submit" class="btn btn-primary">Submit your score</button>
+              {% else %}
+                  <button type="button" class="btn btn-primary" disabled>Log in to submit your score</button>
+                  <div id="id_score" value="0"></div>
+              {% endif %}
+          </fieldset>
+        </form>
+    </div>
+{%  load static %}
+<script src="{% static 'Games/snake.js' %}"></script>
