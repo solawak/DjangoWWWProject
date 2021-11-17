@@ -36,21 +36,21 @@ def process_form(request, game_name):
     return form
 
 
-def snake_render(request):
+def snake(request):
     game_name = 'Snake'
     game_html = 'Games/snake.html'
     return game_render(request, game_name, game_html)
 
 
-def game2(request):
+def flappy(request):
     game_name = 'Flappy_Bird'
-    game_html = 'Games/flappy_test.html'
+    game_html = 'Games/flappy.html'
     return game_render(request, game_name, game_html)
 
 
 def game3(request):
     game_name = 'Blank'
-    game_html = 'Games/flappy_test.html'
+    game_html = 'Games/flappy.html'
     return game_render(request, game_name, game_html)
 
 
@@ -65,7 +65,3 @@ def register_request(request):
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = UserCreationForm()
     return render(request=request, template_name="Games/register.html", context={"register_form": form})
-
-
-def temp_flap(request):
-    return render(request, 'Games/flappy.html')
