@@ -1,0 +1,13 @@
+<div id="score">0</div>
+		<canvas id="snakeboard" width="480" height="400"></canvas>
+<div>
+			<form name="snake_form">
+				<label for="scoreform">Score:</label><br>
+				<input type="text" id="scoreform" name="scoreform" value="0" readonly="readonly" width="10" height="20"><br>
+				<label for="nickname">Nickname:</label><br>
+				<input type="text" id="nickname" name="nickname" value={{ user.username }}>
+				<input type="submit" value="Submit">
+			</form>
+		</div>
+		{%  load static %}
+    <script src="{% static 'Games/snake.js' %}"></script>
