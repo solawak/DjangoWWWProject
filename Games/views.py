@@ -4,8 +4,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Scores
 from .forms import GameForm
-from django.forms import HiddenInput
-from django.http import HttpResponse
 
 
 # Create your views here.
@@ -20,11 +18,24 @@ def game_render(request, game_name, game_html):
         user_scores = scoreboard_sorted.filter(user=request.user)[:10]
     else:
         user_scores = []
-    context = {'game_name': game_name, 'scoreboard': scoreboard_top10, 'user_scores': user_scores, 'game_html': game_html}
+    context = {'game_name': game_name, 'scoreboard': scoreboard_top10, 'user_scores': user_scores,
+               'game_html': game_html, 'form': process_form(request, game_name)}
     return render(request, 'Games/game_template.html', context)
 
+def process_form(request, game_name):
+    if request.method == "POST":
+        form = GameForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.game = game_name
+            instance.save()
+    else:
+        form = GameForm(initial={"user": request.user, "score": 0, "game": game_name})
+    return form
 
-def game1(request):
+
+def snake_render(request):
     game_name = 'Snake'
     game_html = 'Games/snake_test.html'
     return game_render(request, game_name, game_html)
@@ -55,35 +66,5 @@ def register_request(request):
     return render(request=request, template_name="Games/register.html", context={"register_form": form})
 
 
-def temp_snake(request):
-    if request.method == "POST":
-        form = GameForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.game = 'Snake'
-            instance.save()
-    else:
-        form = GameForm(initial={"user": request.user, "score": 0, "game": "Snake"})
-        form.fields['score'].widget.attrs['readonly'] = True
-        form.fields['score'].widget = HiddenInput()
-    return render(request, 'Games/snake.html', {'form': form})
-
-
 def temp_flap(request):
     return render(request, 'Games/flappy.html')
-
-
-def game_form(request):
-    if request.method == "POST":
-        form = GameForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.game = 'Snake'
-            instance.save()
-    else:
-        form = GameForm(initial={"user": request.user, "score": 0, "game": "Snake"})
-        form.fields['score'].widget.attrs['readonly'] = True
-        form.fields['score'].widget = HiddenInput()
-    return render(request, 'Games/snake.html', {'form': form})
