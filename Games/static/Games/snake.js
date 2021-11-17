@@ -161,7 +161,7 @@
         score += 10;
         // Display score on screen
         document.getElementById('score').innerHTML = score;
-		document.getElementById("scoreform").value = score.toString();
+		document.getElementById("id_score").value = score.toString();
         // Generate new food location
         gen_food();
       } else {

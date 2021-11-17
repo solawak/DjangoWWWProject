@@ -14,9 +14,8 @@
     <div class="container">
     <form method="POST">
       <fieldset>
-        <legend>Form</legend>
         {% csrf_token %}
-        {{ form }}
+        {{ form.score.as_hidden }}
         <button type="submit" class="btn btn-primary">Submit score</button>
       </fieldset>
     </form>
