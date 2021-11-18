@@ -7,95 +7,123 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     {%  load static %}
     <link rel="stylesheet" href="{% static 'Games/style.css' %}" type="text/css">
+        {%  load static %}
+    <link rel="icon" href="{% static 'Games/img/turtle.png' %}" type="image/x-icon"/>
 </head>
 <body>
-<div class="container-fluid p-5 bg-primary text-white text-center">
+<div class="container-fluid p-3 bg-primary text-white text-center">
 <h1>This is the {{ game_name }} Page.</h1>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'index' %}" >GOTO index</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'snake' %}">GOTO Snake</a>
-      </li>
-         <li class="nav-item">
-        <a class="nav-link" href="{% url 'flappy' %}">GOTO Flappy</a>
-      </li>
-         <li class="nav-item">
-        <a class="nav-link" href="{% url 'game3' %}">GOTO Game3</a>
-      </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
-    </ul>
+    <nav class="navbar navbar-expand-lg">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}" >GOTO index</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'snake' %}">GOTO Snake</a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{% url 'flappy' %}">GOTO Flappy</a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{% url 'game3' %}">GOTO Game3</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+        </ul>
+    </nav>
     </div>
 
 
     <div class="container">
     <div class="row">
+        <div class='col-sm'>
+            <div id="score">0</div>
+            {% include game_html %}
+            <div class="container">
+                <form method="POST">
+                  <fieldset>
+                      {% if user.is_authenticated %}
+                          {% csrf_token %}
+                          {{ form.score.as_hidden }}
+                          <button type="submit" class="btn btn-primary">Submit your score</button>
+                      {% else %}
+                          <button type="button" class="btn btn-primary" disabled>Log in to submit your score</button>
+                          <div id="id_score" value="0"></div>
+                      {% endif %}
+                  </fieldset>
+                </form>
+            </div>
+        </div>
 
-        <div class='col-sm'>{% include game_html %}</div>
+
 
         <div class='col-sm'>
-            <div>
-                {% if scoreboard|length > 0 %}
-                    <table>
-                    <tr>
-                    <th></th>
-                    <th>User</th>
-                    <th>Score</th>
-                    </tr>
-                {% for tmp_score in scoreboard %}
-                    <tr>
-                        <td>{{ forloop.counter0|add:1 }}</td>
-                        <td>{{ tmp_score.user}}</td>
-                        <td>{{ tmp_score.score }}</td>
-                    </tr>
-                {% endfor %}</table>
-                    {% else %}
-                    <p>No game data available</p>
-                {% endif %}
-            </div>
+            <div class="container">
+                <div class="row">
+                    <div class='col-sm'>
+                        {% if scoreboard|length > 0 %}
+                            <table class="table ">
+                            <thead class="thead-dark">
+                                <tr>
+                                <th scope="col"></th>
+                                <th scope="col" colspan="2">Users Score</th>
+                                </tr>
+                            </thead>
+                        {% for tmp_score in scoreboard %}
+                            <tr>
+                                <th scope="col" >{{ forloop.counter0|add:1 }}</th>
+                                <td>{{ tmp_score.user}}</td>
+                                <td>{{ tmp_score.score }}</td>
+                            </tr>
+                        {% endfor %}</table>
+                            {% else %}
+                            <p>No game data available</p>
+                        {% endif %}
+                    </div>
 
-            <div>
-                {% if user.is_authenticated %}
-                {% if user_scores|length > 0 %}
-                    <table>
-                    <tr>
-                    <th></th>
-                    <th>User</th>
-                    <th>Score</th>
-                    </tr>
-                {% for tmp_score in user_scores %}
-                    <tr>
-                        <td>{{ forloop.counter0|add:1 }}</td>
-                        <td>{{ tmp_score.user}}</td>
-                        <td>{{ tmp_score.score }}</td>
-                    </tr>
-                {% endfor %}</table>
-                {% else %}
-                    <p>No user data available</p>
-                {% endif %}
-                {% else %}
-                    <p><a href="{% url 'login' %}">Log In</a> to see your scoreboard.</p>
-                {% endif %}
+                    <div class='col-sm'>
+                        {% if user.is_authenticated %}
+                        {% if user_scores|length > 0 %}
+                            <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                <th scope="col"></th>
+                                <th scope="col" colspan="2">{{ user.username }} Score</th>
+                                </tr>
+                            </thead>
+                        {% for tmp_score in user_scores %}
+                            <tr>
+                                <th scope="col">{{ forloop.counter0|add:1 }}</th>
+                                <td>{{ tmp_score.user}}</td>
+                                <td>{{ tmp_score.score }}</td>
+                            </tr>
+                        {% endfor %}</table>
+                        {% else %}
+                            <p>No user data available</p>
+                        {% endif %}
+                        {% else %}
+                            <p><a href="{% url 'login' %}">Log In</a> to see your scoreboard.</p>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 </body>
 
 </html>

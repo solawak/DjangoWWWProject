@@ -4,8 +4,6 @@ var myScore;
 
 
 
-
-
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
@@ -23,7 +21,7 @@ var myGameArea = {
 
 myGamePiece = new component(30, 30, "red", 10, 120);
 myGamePiece.gravity = 0.05;
-myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+// myScore = new component("30px", "Consolas", "black", 280, 40, "text");
 myGameArea.start();
 
 function component(width, height, color, x, y, type) {
@@ -110,8 +108,11 @@ function updateGameArea() {
         myObstacles[i].x += -1;
         myObstacles[i].update();
     }
-    myScore.text="SCORE: " + parseInt(myGameArea.frameNo/25);
-    myScore.update();
+    // myScore.text=parseInt(myGameArea.frameNo/25);
+    // myScore.update();
+    var test_score = parseInt(myGameArea.frameNo/25)
+    document.getElementById('score').innerHTML = test_score;
+    document.getElementById("id_score").value = test_score;
     myGamePiece.newPos();
     myGamePiece.update();
 }
