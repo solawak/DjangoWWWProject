@@ -26,6 +26,18 @@ myGamePiece.gravity = 0.05;
 myScore = new component("30px", "Consolas", "black", 280, 40, "text");
 myGameArea.start();
 
+document.addEventListener('keydown', function(event) {
+    if(event.key === " ") {
+        accelerate(-0.2);
+    }
+});
+
+document.addEventListener('keyup', function(event) {
+    if(event.key === " ") {
+        accelerate(0.05);
+    }
+});
+
 function component(width, height, color, x, y, type) {
     this.type = type;
     this.score = 0;
@@ -110,15 +122,15 @@ function updateGameArea() {
         myObstacles[i].x += -1;
         myObstacles[i].update();
     }
-    myScore.text="SCORE: " + parseInt(myGameArea.frameNo/25);
+    myScore.text="SCORE: " + Math.round(parseInt(myGameArea.frameNo)/25);
     myScore.update();
+    document.getElementById("id_score").value = Math.round(parseInt(myGameArea.frameNo)/25);
     myGamePiece.newPos();
     myGamePiece.update();
 }
 
 function everyinterval(n) {
-    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
-    return false;
+    return (myGameArea.frameNo / n) % 1 === 0;
 }
 
 function accelerate(n) {
