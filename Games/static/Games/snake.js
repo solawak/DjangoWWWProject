@@ -37,8 +37,13 @@
         event.preventDefault();
     });
 
-    document.addEventListener("touchstart", touchHandler);
-    document.addEventListener("touchmove", touchHandler);
+    document.addEventListener("touchstart", function(e) {
+    touchHandler(e);
+    });
+
+    document.addEventListener("touchmove", function(e) {
+    touchHandler(e);
+});
 
     snakeboard.addEventListener('mousedown', function(e) {
     getCursorPosition(snakeboard, e)
@@ -73,8 +78,8 @@
         let playerX;
         let playerY;
         if (e.touches) {
-            playerX = e.touches[0].screenX - w/2;
-            playerY = e.touches[0].screenY - h/2;
+            playerX = e.touches[0].clientX - w/2;
+            playerY = e.touches[0].clientY - h/2;
             handleCursorPosition(playerX, playerY)
         }
 }
