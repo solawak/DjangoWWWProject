@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 import django_heroku
 
@@ -29,7 +29,8 @@ STATIC_URL = 'static/'
 SECRET_KEY = 'django-insecure-a(c$nydx0p4p9%*dk93i)3$xkmf(m$darwc@e6^2a!^xw-ze$q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = True #not on production
+Debug = False
 
 ALLOWED_HOSTS = []
 
@@ -134,5 +135,7 @@ STATIC_URL = 'Games/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 django_heroku.settings(locals())
