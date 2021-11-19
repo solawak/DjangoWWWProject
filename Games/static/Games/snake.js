@@ -85,7 +85,7 @@
 }
 
     
-    // main function called repeatedly to keep the game running
+    // main function called repeatedly to keep the game runnin
     function main() {
 
         if (has_game_ended()) 
