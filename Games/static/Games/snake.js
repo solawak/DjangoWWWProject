@@ -46,7 +46,7 @@
     function getCursorPosition(canvas, event){
         const rect = canvas.getBoundingClientRect()
         const x = event.clientX - rect.left - rect.width/2
-        const y = event.clientY - rect.top - rect.height/2;
+        const y = (event.clientY - rect.top - rect.height/2)*(-1);
         handleCursorPosition(x,y)
     }
 
@@ -55,11 +55,11 @@
         if (x>Math.abs(y)){
             pos = 'right'
         } else if (y>Math.abs(x)){
-            pos = 'down'
+            pos = 'up'
         } else if (-x>Math.abs(y)){
             pos = 'left'
         } else if (-y>Math.abs(x)){
-            pos = 'up'
+            pos = 'down'
         }
         if (pos !== ''){
             change_direction(pos)
