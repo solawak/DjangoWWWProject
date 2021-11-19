@@ -67,11 +67,14 @@
     }
 
     function touchHandler(e) {
+        const ratio = window.devicePixelRatio || 1;
+        const w = screen.width * ratio;
+        const h = screen.height * ratio;
         let playerX;
         let playerY;
         if (e.touches) {
-            playerX = e.touches[0].pageX;
-            playerY = e.touches[0].pageY;
+            playerX = e.touches[0].pageX - w/2;
+            playerY = e.touches[0].pageY - h/2;
             handleCursorPosition(playerX, playerY)
         }
 }
