@@ -73,8 +73,8 @@
         let playerX;
         let playerY;
         if (e.touches) {
-            playerX = e.touches[0].pageX - w/2;
-            playerY = e.touches[0].pageY - h/2;
+            playerX = e.touches[0].screenX - w/2;
+            playerY = e.touches[0].screenY - h/2;
             handleCursorPosition(playerX, playerY)
         }
 }
