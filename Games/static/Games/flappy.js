@@ -4,8 +4,6 @@ var myScore;
 
 
 
-
-
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
@@ -23,7 +21,7 @@ var myGameArea = {
 
 myGamePiece = new component(30, 30, "red", 10, 120);
 myGamePiece.gravity = 0.05;
-myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+//myScore = new component("30px", "Consolas", "black", 280, 40, "text");
 myGameArea.start();
 
 document.addEventListener('keydown', function(event) {
@@ -122,15 +120,18 @@ function updateGameArea() {
         myObstacles[i].x += -1;
         myObstacles[i].update();
     }
-    myScore.text="SCORE: " + Math.round(parseInt(myGameArea.frameNo)/25);
-    myScore.update();
+    //myScore.text="SCORE: " + parseInt(myGameArea.frameNo/25);
+    //myScore.update();
+    var test_score = Math.round(parseInt(myGameArea.frameNo/25))
+    document.getElementById('score').innerHTML = test_score;
     document.getElementById("id_score").value = Math.round(parseInt(myGameArea.frameNo)/25);
     myGamePiece.newPos();
     myGamePiece.update();
 }
 
 function everyinterval(n) {
-    return (myGameArea.frameNo / n) % 1 === 0;
+    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
 }
 
 function accelerate(n) {

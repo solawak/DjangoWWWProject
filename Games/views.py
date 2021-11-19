@@ -43,7 +43,7 @@ def snake(request):
 
 
 def flappy(request):
-    game_name = 'Flappy_Bird'
+    game_name = 'Flappy Bird'
     game_html = 'Games/flappy.html'
     return game_render(request, game_name, game_html)
 

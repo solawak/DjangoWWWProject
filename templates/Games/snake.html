@@ -1,18 +1,4 @@
-<div id="score">0</div>
 <canvas id="snakeboard" width="480" height="400"></canvas>
-    <div class="container">
-        <form method="POST">
-          <fieldset>
-              {% if user.is_authenticated %}
-                  {% csrf_token %}
-                  {{ form.score.as_hidden }}
-                  <button type="submit" class="btn btn-primary">Submit your score</button>
-              {% else %}
-                  <button type="button" class="btn btn-primary" disabled>Log in to submit your score</button>
-                  <div id="id_score" value="0"></div>
-              {% endif %}
-          </fieldset>
-        </form>
-    </div>
+
 {%  load static %}
 <script src="{% static 'Games/snake.js' %}"></script>
