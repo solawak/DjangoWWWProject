@@ -33,9 +33,49 @@
     gen_food();
 
     document.addEventListener("keydown", function(event){
-        change_direction(event);
+        handle_arrows(event);
         event.preventDefault();
     });
+
+    document.addEventListener("touchstart", touchHandler);
+    document.addEventListener("touchmove", touchHandler);
+
+    snakeboard.addEventListener('mousedown', function(e) {
+    getCursorPosition(snakeboard, e)
+})
+    function getCursorPosition(canvas, event){
+        const rect = canvas.getBoundingClientRect()
+        const x = event.clientX - rect.left - rect.width/2
+        const y = event.clientY - rect.top - rect.height/2;
+        handleCursorPosition(x,y)
+    }
+
+    function handleCursorPosition(x,y) {
+        let pos = '';
+        if (x>Math.abs(y)){
+            pos = 'right'
+        } else if (y>Math.abs(x)){
+            pos = 'down'
+        } else if (-x>Math.abs(y)){
+            pos = 'left'
+        } else if (-y>Math.abs(x)){
+            pos = 'up'
+        }
+        if (pos !== ''){
+            change_direction(pos)
+        }
+    }
+
+    function touchHandler(e) {
+        let playerX;
+        let playerY;
+        if (e.touches) {
+            playerX = e.touches[0].pageX;
+            playerY = e.touches[0].pageY;
+            handleCursorPosition(playerX, playerY)
+        }
+}
+
     
     // main function called repeatedly to keep the game running
     function main() {
@@ -120,34 +160,51 @@
       });
     }
 
-    function change_direction(event) {
-      const LEFT_KEY = 37;
-      const RIGHT_KEY = 39;
-      const UP_KEY = 38;
-      const DOWN_KEY = 40;
-      
+    function handle_arrows(event){
+        const LEFT_KEY = 37;
+        const RIGHT_KEY = 39;
+        const UP_KEY = 38;
+        const DOWN_KEY = 40;
+        const keyPressed = event.keyCode;
+        let direction
+        if (keyPressed === LEFT_KEY){
+              direction = 'left'
+        }
+        else if (keyPressed === UP_KEY) {
+                direction = 'up'
+        }
+        else if (keyPressed === RIGHT_KEY) {
+                direction = 'right'
+        }
+        else if (keyPressed === DOWN_KEY) {
+                direction = 'down'
+        }
+        change_direction(direction)
+    }
+
+    function change_direction(direction) {
+
     // Prevent the snake from reversing
     
       if (changing_direction) return;
       changing_direction = true;
-      const keyPressed = event.keyCode;
       const goingUp = dy === -10;
       const goingDown = dy === 10;
       const goingRight = dx === 10;
       const goingLeft = dx === -10;
-      if (keyPressed === LEFT_KEY && !goingRight) {
+      if (direction === 'left' && !goingRight) {
         dx = -10;
         dy = 0;
       }
-      if (keyPressed === UP_KEY && !goingDown) {
+      if (direction === 'up' && !goingDown) {
         dx = 0;
         dy = -10;
       }
-      if (keyPressed === RIGHT_KEY && !goingLeft) {
+      if (direction === 'right' && !goingLeft) {
         dx = 10;
         dy = 0;
       }
-      if (keyPressed === DOWN_KEY && !goingUp) {
+      if (direction === 'down' && !goingUp) {
         dx = 0;
         dy = 10;
       }
