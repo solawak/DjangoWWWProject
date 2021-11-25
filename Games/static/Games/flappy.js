@@ -142,6 +142,6 @@ document.addEventListener("touchstart", function(e) {
     accelerate(0.05);
     });
 
-document.addEventListener("touchend", function(e) {
+document.addEventListener("touchcancel", function(e) {
     accelerate(-0.2);
     });
