@@ -139,9 +139,9 @@ function accelerate(n) {
 }
 
 document.addEventListener("touchstart", function(e) {
-    accelerate(0.05);
+    accelerate(-0.2);
     });
 
-document.addEventListener("touchcancel", function(e) {
-    accelerate(-0.2);
+document.addEventListener("touchend", function(e) {
+    accelerate(0.05);
     });
