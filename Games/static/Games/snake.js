@@ -92,11 +92,11 @@
         if (x>Math.abs(y)){
             pos = 'right';
         } else if (y>Math.abs(x)){
-            pos = 'up';
+            pos = 'down';
         } else if (-x>Math.abs(y)){
             pos = 'left';
         } else if (-y>Math.abs(x)){
-            pos = 'down';
+            pos = 'up';
         }
         let txt;
         if (pos !== '') {
