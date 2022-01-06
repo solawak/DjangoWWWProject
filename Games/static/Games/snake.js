@@ -34,6 +34,7 @@
 
     if (window.DeviceOrientationEvent) {
         document.getElementById("alpha").innerText = "alpha1";
+        console.log("support")
         window.addEventListener('deviceorientation', function(e){
             document.getElementById("alpha").innerText = e.alpha.toString();
             document.getElementById("beta").innerText = e.beta.toString();
