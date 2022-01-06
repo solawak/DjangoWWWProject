@@ -33,9 +33,12 @@
     gen_food();
     if (window.DeviceOrientationEvent) {
         window.addEventListener('deviceorientation', function(e){
-            document.getElementById("alpha").innerText = e.alpha;
-            document.getElementById("beta").innerText = e.beta;
-            document.getElementById("gamma").innerText = e.gamma;
+            document.getElementById("alpha").innerText = e.alpha.toString();
+            document.getElementById("beta").innerText = e.beta.toString();
+            document.getElementById("gamma").innerText = e.gamma.toString();
+            console.log(e.alpha)
+            console.log(e.beta)
+            console.log(e.gamma)
         }, false);
 
     }
