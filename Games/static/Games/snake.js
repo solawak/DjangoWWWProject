@@ -53,15 +53,15 @@
     });
 
     document.addEventListener("touchstart", function(e) {
-    touchHandler(e);
+        touchHandler(e);
     });
 
-    document.addEventListener("touchmove", function(e) {
-    touchHandler(e);
-});
+//     document.addEventListener("touchmove", function(e) {
+//     touchHandler(e);
+// });
 
     snakeboard.addEventListener('mousedown', function(e) {
-    getCursorPosition(snakeboard, e)
+    getCursorPosition(snakeboard, e);
 })
     function gyroscopeHandler(event){
         let pos = '';
@@ -75,31 +75,33 @@
         //     pos = 'down'
         // }
         if (pos !== ''){
-            change_direction(pos)
+            change_direction(pos);
         }
     }
 
     function getCursorPosition(canvas, event){
-        const rect = canvas.getBoundingClientRect()
-        const x = event.clientX - rect.left - rect.width/2
+        const rect = canvas.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width/2;
         const y = (event.clientY - rect.top - rect.height/2)*(-1);
-        handleCursorPosition(x,y)
+        handleCursorPosition(x,y);
     }
 
     function handleCursorPosition(x,y) {
         let pos = '';
         if (x>Math.abs(y)){
-            pos = 'right'
+            pos = 'right';
         } else if (y>Math.abs(x)){
-            pos = 'up'
+            pos = 'up';
         } else if (-x>Math.abs(y)){
-            pos = 'left'
+            pos = 'left';
         } else if (-y>Math.abs(x)){
-            pos = 'down'
+            pos = 'down';
         }
-        if (pos !== ''){
-            document.getElementById("touched").innerText = "touched: " + pos;
-            change_direction(pos)
+        let txt;
+        if (pos !== '') {
+            txt = document.getElementById("touched").innerText;
+            txt = txt + " touched: " + pos + "|";
+            change_direction(pos);
         }
     }
 
@@ -109,10 +111,14 @@
         const h = screen.height * ratio;
         let touchX;
         let touchY;
+        let txt;
+        txt = document.getElementById("touched").innerText;
+        txt = txt + " W:" + w + " H:" + h + " Ratio:" + ratio;
         if (e.touches) {
-            touchX = e.touches[0].clientX - w/2;
-            touchY = e.touches[0].clientY - h/2;
-            handleCursorPosition(touchX, touchY)
+            txt = txt + " [X:" + e.touches[0].clientX+"][Y:" + e.touches[0].clientY + "]";
+            touchX = e.touches[0].clientX - w / 2;
+            touchY = e.touches[0].clientY - h / 2;
+            handleCursorPosition(touchX, touchY);
         }
 }
 
