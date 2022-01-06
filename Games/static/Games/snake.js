@@ -31,6 +31,14 @@
     main();
 
     gen_food();
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', function(e){
+            document.getElementById("alpha").innerText = e.alpha;
+            document.getElementById("beta").innerText = e.beta;
+            document.getElementById("gamma").innerText = e.gamma;
+        }, false);
+
+    }
 
     document.addEventListener("keydown", function(event){
         handle_arrows(event);
@@ -48,6 +56,22 @@
     snakeboard.addEventListener('mousedown', function(e) {
     getCursorPosition(snakeboard, e)
 })
+    function gyroscopeHandler(event){
+        let pos = '';
+        // if (){
+        //     pos = 'right'
+        // } else if (){
+        //     pos = 'up'
+        // } else if (){
+        //     pos = 'left'
+        // } else if (){
+        //     pos = 'down'
+        // }
+        if (pos !== ''){
+            change_direction(pos)
+        }
+    }
+
     function getCursorPosition(canvas, event){
         const rect = canvas.getBoundingClientRect()
         const x = event.clientX - rect.left - rect.width/2
@@ -75,17 +99,17 @@
         const ratio = window.devicePixelRatio || 1;
         const w = screen.width * ratio;
         const h = screen.height * ratio;
-        let playerX;
-        let playerY;
+        let touchX;
+        let touchY;
         if (e.touches) {
-            playerX = e.touches[0].clientX - w/2;
-            playerY = e.touches[0].clientY - h/2;
-            handleCursorPosition(playerX, playerY)
+            touchX = e.touches[0].clientX - w/2;
+            touchY = e.touches[0].clientY - h/2;
+            handleCursorPosition(touchX, touchY)
         }
 }
 
     
-    // main function called repeatedly to keep the game runnin
+    // main function called repeatedly to keep the game running
     function main() {
 
         if (has_game_ended()) 
