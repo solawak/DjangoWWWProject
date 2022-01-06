@@ -32,21 +32,6 @@
 
     gen_food();
 
-    if (window.DeviceOrientationEvent) {
-        document.getElementById("alpha").innerText = "alpha1";
-        console.log("support")
-        window.addEventListener('deviceorientation', function(e){
-            document.getElementById("alpha").innerText = e.alpha.toString();
-            document.getElementById("beta").innerText = e.beta.toString();
-            document.getElementById("gamma").innerText = e.gamma.toString();
-            console.log(e.alpha)
-            console.log(e.beta)
-            console.log(e.gamma)
-        }, false);
-
-    }
-
-
     document.addEventListener("keydown", function(event){
         handle_arrows(event);
         event.preventDefault();
@@ -64,28 +49,12 @@
 //     getCursorPosition(snakeboard, e);
 // })
 
-    function gyroscopeHandler(event){
-        let pos = '';
-        // if (){
-        //     pos = 'right'
-        // } else if (){
-        //     pos = 'up'
-        // } else if (){
-        //     pos = 'left'
-        // } else if (){
-        //     pos = 'down'
-        // }
-        if (pos !== ''){
-            change_direction(pos);
-        }
-    }
-
-    function getCursorPosition(canvas, event){
-        const rect = canvas.getBoundingClientRect();
-        const x = event.clientX - rect.left - rect.width/2;
-        const y = (event.clientY - rect.top - rect.height/2)*(-1);
-        handleCursorPosition(x,y);
-    }
+    // function getCursorPosition(canvas, event){
+    //     const rect = canvas.getBoundingClientRect();
+    //     const x = event.clientX - rect.left - rect.width/2;
+    //     const y = (event.clientY - rect.top - rect.height/2)*(-1);
+    //     handleCursorPosition(x,y);
+    // }
 
     function handleCursorPosition(x,y) {
         let pos = '';
@@ -98,10 +67,7 @@
         } else if (-y>Math.abs(x)){
             pos = 'up';
         }
-        let txt;
         if (pos !== '') {
-            txt = document.getElementById("touched").innerText;
-            document.getElementById("touched").innerText = txt + " touched: " + pos + "|";
             change_direction(pos);
         }
     }
@@ -111,11 +77,7 @@
         const screen_height = document.documentElement.clientHeight;
         let touchX;
         let touchY;
-        let txt;
-        document.getElementById("alpha").innerText = screen_width.toString() +" "+ screen_height.toString() ;
-        txt = document.getElementById("touched").innerText;
         if (e.touches) {
-            document.getElementById("touched").innerText = txt + " [X:" + e.touches[0].clientX+"][Y:" + e.touches[0].clientY + "]";
             touchX = e.touches[0].clientX - screen_width / 2;
             touchY = e.touches[0].clientY - screen_height / 2;
             handleCursorPosition(touchX, touchY);
