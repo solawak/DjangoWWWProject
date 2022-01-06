@@ -60,9 +60,10 @@
 //     touchHandler(e);
 // });
 
-    snakeboard.addEventListener('mousedown', function(e) {
-    getCursorPosition(snakeboard, e);
-})
+//     snakeboard.addEventListener('mousedown', function(e) {
+//     getCursorPosition(snakeboard, e);
+// })
+
     function gyroscopeHandler(event){
         let pos = '';
         // if (){
