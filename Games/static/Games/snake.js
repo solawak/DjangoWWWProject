@@ -44,6 +44,20 @@
 
     }
 
+    let gyroscope = new Gyroscope({frequency: 60});
+
+    gyroscope.addEventListener('reading', e => {
+        document.getElementById("alpha").innerText = "gyroalpha";
+      console.log("Angular velocity along the X-axis " + gyroscope.x);
+      console.log("Angular velocity along the Y-axis " + gyroscope.y);
+      console.log("Angular velocity along the Z-axis " + gyroscope.z);
+      document.getElementById("alpha").innerText = gyroscope.x.toString();
+      document.getElementById("beta").innerText = gyroscope.y.toString();
+      document.getElementById("gamma").innerText = gyroscope.z.toString();
+    });
+    gyroscope.start();
+
+
     document.addEventListener("keydown", function(event){
         handle_arrows(event);
         event.preventDefault();
@@ -95,6 +109,7 @@
             pos = 'down'
         }
         if (pos !== ''){
+            document.getElementById("touched").innerText = "touched: " + pos;
             change_direction(pos)
         }
     }
