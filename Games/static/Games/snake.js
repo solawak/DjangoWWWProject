@@ -100,7 +100,7 @@
         let txt;
         if (pos !== '') {
             txt = document.getElementById("touched").innerText;
-            txt = txt + " touched: " + pos + "|";
+            document.getElementById("touched").innerText = txt + " touched: " + pos + "|";
             change_direction(pos);
         }
     }
@@ -115,7 +115,7 @@
         txt = document.getElementById("touched").innerText;
         txt = txt + " W:" + w + " H:" + h + " Ratio:" + ratio;
         if (e.touches) {
-            txt = txt + " [X:" + e.touches[0].clientX+"][Y:" + e.touches[0].clientY + "]";
+            document.getElementById("touched").innerText = txt + " [X:" + e.touches[0].clientX+"][Y:" + e.touches[0].clientY + "]";
             touchX = e.touches[0].clientX - w / 2;
             touchY = e.touches[0].clientY - h / 2;
             handleCursorPosition(touchX, touchY);
