@@ -113,6 +113,9 @@
         let touchX;
         let touchY;
         let txt;
+        screen_width = document.documentElement.clientWidth;
+        screen_heght = document.documentElement.clientHeight;
+        document.getElementById("alpha").innerText = screen_width.toString() +" "+ screen_heght.toString() ;
         txt = document.getElementById("touched").innerText;
         txt = txt + " W:" + w + " H:" + h + " Ratio:" + ratio;
         if (e.touches) {
