@@ -107,9 +107,6 @@
     }
 
     function touchHandler(e) {
-        const ratio = window.devicePixelRatio || 1;
-        const w = screen.width * ratio;
-        const h = screen.height * ratio;
         const screen_width = document.documentElement.clientWidth;
         const screen_height = document.documentElement.clientHeight;
         let touchX;
@@ -117,7 +114,6 @@
         let txt;
         document.getElementById("alpha").innerText = screen_width.toString() +" "+ screen_height.toString() ;
         txt = document.getElementById("touched").innerText;
-        txt = txt + " W:" + w + " H:" + h + " Ratio:" + ratio;
         if (e.touches) {
             document.getElementById("touched").innerText = txt + " [X:" + e.touches[0].clientX+"][Y:" + e.touches[0].clientY + "]";
             touchX = e.touches[0].clientX - screen_width / 2;
