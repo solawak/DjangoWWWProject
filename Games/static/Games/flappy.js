@@ -136,3 +136,11 @@ function everyinterval(n) {
 function accelerate(n) {
     myGamePiece.gravity = n;
 }
+
+document.addEventListener("touchstart", function(e) {
+    accelerate(-0.2);
+    });
+
+document.addEventListener("touchend", function(e) {
+    accelerate(0.05);
+    });
