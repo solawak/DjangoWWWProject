@@ -122,8 +122,7 @@ function updateGameArea() {
     }
     //myScore.text="SCORE: " + parseInt(myGameArea.frameNo/25);
     //myScore.update();
-    var test_score = Math.round(parseInt(myGameArea.frameNo/25))
-    document.getElementById('score').innerHTML = test_score;
+    document.getElementById('score').innerHTML = Math.round(parseInt(myGameArea.frameNo / 25));
     document.getElementById("id_score").value = Math.round(parseInt(myGameArea.frameNo)/25);
     myGamePiece.newPos();
     myGamePiece.update();
