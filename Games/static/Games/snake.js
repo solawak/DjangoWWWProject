@@ -131,15 +131,19 @@ function handle_arrows(event) {
     const RIGHT_KEY = 39;
     const UP_KEY = 38;
     const DOWN_KEY = 40;
+    const W_KEY = 87;
+    const S_KEY = 83;
+    const A_KEY = 65;
+    const D_KEY = 68;
     const keyPressed = event.keyCode;
     let direction
-    if (keyPressed === LEFT_KEY) {
+    if (keyPressed === LEFT_KEY || keyPressed === A_KEY) {
         direction = 'left'
-    } else if (keyPressed === UP_KEY) {
+    } else if (keyPressed === UP_KEY || keyPressed === W_KEY) {
         direction = 'up'
-    } else if (keyPressed === RIGHT_KEY) {
+    } else if (keyPressed === RIGHT_KEY || keyPressed === D_KEY) {
         direction = 'right'
-    } else if (keyPressed === DOWN_KEY) {
+    } else if (keyPressed === DOWN_KEY || keyPressed === S_KEY) {
         direction = 'down'
     }
     change_direction(direction)
