@@ -35,3 +35,23 @@ a.hoverable_div {
 .nav-link{
   color: white;
   }
+
+#menu3 {
+		display:none;
+	}
+
+@media only screen and (max-width: 990px) {
+  #menu1 {
+    display: none;
+  }
+
+	#menu2 {
+		display: none;
+	}
+	#menu3 {
+		display:inline;
+	}
+}
+#dropdownMenuButton1 {
+	background-color: #0d6efd;
+}
