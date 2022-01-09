@@ -10,6 +10,70 @@
 
 </head>
 <body>
+<div class="container-fluid p-3 bg-primary text-white text-center">
+<h1>This is the {{ game_name }} Page.</h1>
+    <nav class="navbar navbar-expand-lg">
+        <ul id = "menu1" class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}" >Home Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'snake' %}">Snake</a>
+          </li>
+             <li class="nav-item">
+            <a class="nav-link" href="{% url 'flappy' %}">Flappy Square</a>
+          </li>
+        </ul>
+        <ul id = "menu2" class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+        </ul>
+    <div id="menu3" class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+            <a class="dropdown-item" href="{% url 'index' %}" >Home Page</a>
+          </li>
+          <li >
+            <a class="dropdown-item" href="{% url 'snake' %}">Snake</a>
+          </li>
+             <li>
+            <a class="dropdown-item" href="{% url 'flappy' %}">Flappy Square</a>
+          </li>
+            {% if user.is_authenticated %}
+                    <li>
+                        <a class="dropdown-item" aria-disabled="true">Hi {{ user.username }}!</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li >
+                        <a class="dropdown-item" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li >
+                        <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+          </ul>
+        </div>
+    </nav>
+    </div>
   <main>
     {% block content %}
     {% endblock %}

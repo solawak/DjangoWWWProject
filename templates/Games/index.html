@@ -32,6 +32,28 @@
                     </li>
                 {% endif %}
         </ul>
+    <div id="menu3" class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% if user.is_authenticated %}
+                    <li>
+                        <a class="dropdown-item" aria-disabled="true">Hi {{ user.username }}!</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li >
+                        <a class="dropdown-item" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li >
+                        <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+          </ul>
+        </div>
     </nav>
 </div>
   
