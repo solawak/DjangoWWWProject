@@ -15,7 +15,7 @@
 <div class="container-fluid p-3 bg-primary text-white text-center">
   <h1>TurtleGames</h1>
     <nav class="navbar navbar-expand-lg">
-        <ul class="navbar-nav ms-auto">
+        <ul id = "menu1" class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item active">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
