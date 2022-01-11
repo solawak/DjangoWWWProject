@@ -57,6 +57,7 @@ function touchHandler(e) {
     if (e.touches) {
         touchX = e.touches[0].pageX - screen_width / 2;
         touchY = e.touches[0].pageY - screen_height / 2;
+        document.getElementById("test").innerHTML = touchX.toString() + " " + touchY.toString();
         handleCursorPosition(touchX, touchY);
     }
 }
