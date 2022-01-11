@@ -53,8 +53,8 @@ function touchHandler(e) {
     const screen_width = document.documentElement.clientWidth;
     const screen_height = document.documentElement.clientHeight;
     var ratio = window.devicePixelRatio || 1;
-    var w = screen.width / ratio;
-    var h = screen.height / ratio;
+    var w = screen.width;
+    var h = screen.height;
     let touchX;
     let touchY;
     let X;
