@@ -52,6 +52,9 @@ function handleCursorPosition(x, y) {
 function touchHandler(e) {
     const screen_width = document.documentElement.clientWidth;
     const screen_height = document.documentElement.clientHeight;
+    var ratio = window.devicePixelRatio || 1;
+    var w = screen.width * ratio;
+    var h = screen.height * ratio;
     let touchX;
     let touchY;
     let X;
@@ -61,7 +64,7 @@ function touchHandler(e) {
         Y = e.touches[0].screenY;
         touchX = e.touches[0].screenX - screen_width / 2;
         touchY = e.touches[0].screenY - screen_height / 2;
-        document.getElementById("1").innerHTML = "width: " + screen_width.toString() + " | height: " + screen_height.toString();
+        document.getElementById("1").innerHTML = "width: " + w.toString() + " | height: " + h.toString();
         document.getElementById("2").innerHTML = "touchx: " + X.toString() + " | touchy: " + Y.toString();
         document.getElementById("3").innerHTML = (X - screen_width / 2).toString() + " | " + (Y- screen_width / 2).toString();
         document.getElementById("4").innerHTML = (X - screen_width).toString() + " | " + (Y- screen_width).toString();
