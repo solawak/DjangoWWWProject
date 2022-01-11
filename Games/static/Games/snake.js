@@ -54,12 +54,17 @@ function touchHandler(e) {
     const screen_height = document.documentElement.clientHeight;
     let touchX;
     let touchY;
+    let X;
+    let Y;
     if (e.touches) {
-        touchX = e.touches[0].clientX - screen_width / 2;
-        touchY = e.touches[0].clientY - screen_height / 2;
-        document.getElementById("client").innerHTML = "Client: " + e.touches[0].clientX.toString() + " " + e.touches[0].clientY.toString();
-        document.getElementById("page").innerHTML = "Page: " + e.touches[0].pageX.toString() + " " + e.touches[0].pageY.toString();
-        document.getElementById("screen").innerHTML = e.touches[0].screenX.toString() + " " + e.touches[0].screenY.toString();
+        X = e.touches[0].screenX;
+        Y = e.touches[0].screenY;
+        touchX = e.touches[0].screenX - screen_width / 2;
+        touchY = e.touches[0].screenY - screen_height / 2;
+        document.getElementById("1").innerHTML = "width: " + screen_width.toString() + " | height: " + screen_height.toString();
+        document.getElementById("2").innerHTML = "touchx: " + X.toString() + " | touchy: " + Y.toString();
+        document.getElementById("3").innerHTML = (X - screen_width / 2).toString() + " | " + (Y- screen_width / 2).toString();
+        document.getElementById("4").innerHTML = (X - screen_width).toString() + " | " + (Y- screen_width).toString();
         handleCursorPosition(touchX, touchY);
     }
 }
