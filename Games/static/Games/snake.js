@@ -55,8 +55,8 @@ function touchHandler(e) {
     let touchX;
     let touchY;
     if (e.touches) {
-        touchX = e.touches[0].clientX - screen_width / 2;
-        touchY = e.touches[0].clientY - screen_height / 2;
+        touchX = e.touches[0].screenX - screen_width / 2;
+        touchY = e.touches[0].screenY - screen_height / 2;
         handleCursorPosition(touchX, touchY);
     }
 }
