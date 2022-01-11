@@ -54,17 +54,9 @@ function touchHandler(e) {
     const screen_height = screen.height;
     let touchX;
     let touchY;
-    let X;
-    let Y;
     if (e.touches) {
-        X = e.touches[0].screenX;
-        Y = e.touches[0].screenY;
         touchX = e.touches[0].screenX - screen_width / 2;
         touchY = e.touches[0].screenY - screen_height / 2;
-        document.getElementById("1").innerHTML = "width: " + screen_width.toString() + " | height: " + screen_height.toString();
-        document.getElementById("2").innerHTML = "touchx: " + X.toString() + " | touchy: " + Y.toString();
-        document.getElementById("3").innerHTML = (X - screen_width / 2).toString() + " | " + (Y- screen_width / 2).toString();
-        document.getElementById("4").innerHTML = (X - screen_width).toString() + " | " + (Y- screen_width).toString();
         handleCursorPosition(touchX, touchY);
     }
 }
