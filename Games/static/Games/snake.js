@@ -55,9 +55,11 @@ function touchHandler(e) {
     let touchX;
     let touchY;
     if (e.touches) {
-        touchX = e.touches[0].pageX - screen_width / 2;
-        touchY = e.touches[0].pageY - screen_height / 2;
-        document.getElementById("test").innerHTML = touchX.toString() + " " + touchY.toString();
+        touchX = e.touches[0].clientX - screen_width / 2;
+        touchY = e.touches[0].clientY - screen_height / 2;
+        document.getElementById("client").innerHTML = "Client: " + e.touches[0].clientX.toString() + " " + e.touches[0].clientY.toString();
+        document.getElementById("page").innerHTML = "Page: " + e.touches[0].pageX.toString() + " " + e.touches[0].pageY.toString();
+        document.getElementById("screen").innerHTML = e.touches[0].screenX.toString() + " " + e.touches[0].screenY.toString();
         handleCursorPosition(touchX, touchY);
     }
 }
