@@ -86,7 +86,7 @@
                   <fieldset>
                       {% if user.is_authenticated %}
                           {% csrf_token %}
-                          {{ form.score.as_hidden }}
+                          {{ form.score }}
                           <button type="submit" class="btn btn-primary">Submit your score</button>
                       {% else %}
                           <button type="button" class="btn btn-primary" disabled>Log in to submit your score</button>
