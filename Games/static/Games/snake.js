@@ -73,6 +73,7 @@ function main() {
         move_snake();
         drawSnake();
         document.getElementById("id_score").innerHTML = score.toString();
+        document.getElementById("score").innerHTML = score.toString();
         //document.getElementById("id_score").value = score.toString();
         main();
     }, 100)

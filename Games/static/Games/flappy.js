@@ -123,8 +123,8 @@ function updateGameArea() {
     }
     //myScore.text="SCORE: " + parseInt(myGameArea.frameNo/25);
     //myScore.update();
-    document.getElementById('score').innerHTML = Math.round(parseInt(myGameArea.frameNo / 25));
-    document.getElementById("id_score").innerHTML = Math.round(parseInt(myGameArea.frameNo)/25);
+    document.getElementById('cur_score').innerHTML = Math.round(parseInt(myGameArea.frameNo / 25));
+    document.getElementById("score").innerHTML = Math.round(parseInt(myGameArea.frameNo)/25);
     //document.getElementById("id_score").value = Math.round(parseInt(myGameArea.frameNo)/25);
     myGamePiece.newPos();
     myGamePiece.update();

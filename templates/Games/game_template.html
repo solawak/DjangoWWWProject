@@ -79,14 +79,14 @@
     <div class="container">
     <div class="row">
         <div class='col-sm'>
-            <div id="score">0</div>
+            <div id="cur_score">0</div>
             {% include game_html %}
             <div class="container">
                 <form method="POST">
                   <fieldset>
                       {% if user.is_authenticated %}
                           {% csrf_token %}
-                          {{ form.score.html_name }}
+                          {{ form.score }}
                           <button type="submit" class="btn btn-primary">Submit your score</button>
                       {% else %}
                           <button type="button" class="btn btn-primary" disabled>Log in to submit your score</button>
