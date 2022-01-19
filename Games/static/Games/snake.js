@@ -72,9 +72,9 @@ function main() {
         drawFood();
         move_snake();
         drawSnake();
-        document.getElementById("id_score").innerHTML = score.toString();
-        document.getElementById("score").innerHTML = score.toString();
-        //document.getElementById("id_score").value = score.toString();
+        //document.getElementById("id_score").innerHTML = score.toString();
+        document.getElementById("cur_score").innerHTML = score.toString();
+        document.getElementById("id_score").value = score.toString();
         main();
     }, 100)
 }
