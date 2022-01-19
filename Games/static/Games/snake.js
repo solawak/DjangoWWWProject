@@ -72,7 +72,6 @@ function main() {
         drawFood();
         move_snake();
         drawSnake();
-        //document.getElementById("id_score").innerHTML = score.toString();
         document.getElementById("cur_score").innerHTML = score.toString();
         document.getElementById("id_score").value = score.toString();
         main();
@@ -183,7 +182,6 @@ function move_snake() {
     const has_eaten_food = snake[0].x === food_x && snake[0].y === food_y;
     if (has_eaten_food) {
         score += 10;
-        document.getElementById('score').innerHTML = score;
         gen_food();
     } else {
         snake.pop();
