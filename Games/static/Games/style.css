@@ -6,8 +6,8 @@ body {
 	background-color: gray;
 	padding: 0;
 	border-radius: 10px;
-	height: 10em;
-	width: 10em;
+	height: 15em;
+	width: 15em;
 	margin: 5px 1% 5px 1%;
 	float: left;
 	position: relative;
@@ -26,11 +26,31 @@ body {
 }
 
 .grow img {
-	width: 10em;
+	width: 15em;
 }
+
+@media only screen and (max-width: 990px) {
+  .grow {
+	background-color: gray;
+	padding: 0;
+	border-radius: 10px;
+	height: 20em;
+	width: 15em;
+	margin: 5px 1% 5px 1%;
+	float: left;
+	position: relative;
+	transition: height 0.5s;
+	-webkit-transition: height 0.5s;
+	text-align: center;
+	overflow: hidden;
+	transition: 1.5s;
+}
+}
+
+
 .grow:hover {
   height: 20em;
-  width: 10em;
+  width: 15em;
 }
 
 a.hoverable_div {
@@ -60,4 +80,14 @@ a.hoverable_div {
 }
 #dropdownMenuButton1 {
 	background-color: #0d6efd;
+}
+
+#welcome_tag {
+	color: inherit;
+}
+
+.col-sm{
+	flex-direction: column;
+	align-items: center;
+	display: flex;
 }

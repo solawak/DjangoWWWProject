@@ -18,7 +18,7 @@
         <ul id = "menu1" class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item active">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
+                        <a id="welcome_tag" class="nav-link" href="#" tabindex="-1" aria-disabled="true">Welcome {{ user.username }}!</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
@@ -39,7 +39,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {% if user.is_authenticated %}
                     <li>
-                        <a class="dropdown-item" aria-disabled="true">Hi {{ user.username }}!</a>
+                        <a class="dropdown-item" aria-disabled="true">Welcome {{ user.username }}!</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
@@ -59,7 +59,7 @@
   
 <div class="container mt-5">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm">
       <h3>Snake</h3>
       <a href="{% url 'snake' %}" class="hoverable_div">
 		<div class="grow">
@@ -69,12 +69,12 @@
 		</div>
 		</a>
     </div>
-    <div class="col-sm-4">
-      <h3>Flappy Bird</h3>
+    <div class="col-sm">
+      <h3>Flappy Square</h3>
       <a href="{% url 'flappy' %}" class="hoverable_div">
 		<div class="grow">
 		  <img src="{% static 'Games/img/flappy.png' %}" alt="Flappy image">
-		  <p>Flappy Bird is an arcade-style game in which the player controls the bird</p>
+		  <p>Flappy Square is an arcade-style game in which the player controls the bird</p>
 		</div>
 		</a>
     </div>
