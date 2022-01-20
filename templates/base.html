@@ -50,7 +50,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {% if user.is_authenticated %}
                     <li>
-                        <a class="dropdown-item" aria-disabled="true">Hi {{ user.username }}!</a>
+                        <a class="dropdown-item" aria-disabled="true">Welcome {{ user.username }}!</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
