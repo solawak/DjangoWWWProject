@@ -27,7 +27,7 @@
         <ul id = "menu2" class="navbar-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
+                        <a id="welcome_tag" class="nav-link" href="#" tabindex="-1" aria-disabled="true">Welcome {{ user.username }}!</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
@@ -57,7 +57,7 @@
           </li>
             {% if user.is_authenticated %}
                     <li>
-                        <a class="dropdown-item" aria-disabled="true">Hi {{ user.username }}!</a>
+                        <a class="dropdown-item" aria-disabled="true">Welcome {{ user.username }}!</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
