@@ -29,7 +29,7 @@ body {
 	width: 15em;
 }
 
-@media{
+@media only screen and (max-width: 990px) {
   .grow {
 	background-color: gray;
 	padding: 0;
