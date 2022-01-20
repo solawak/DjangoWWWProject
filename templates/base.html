@@ -48,15 +48,6 @@
             Menu
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li>
-            <a class="dropdown-item" href="{% url 'index' %}" >Home Page</a>
-          </li>
-          <li >
-            <a class="dropdown-item" href="{% url 'snake' %}">Snake</a>
-          </li>
-             <li>
-            <a class="dropdown-item" href="{% url 'flappy' %}">Flappy Square</a>
-          </li>
             {% if user.is_authenticated %}
                     <li>
                         <a class="dropdown-item" aria-disabled="true">Hi {{ user.username }}!</a>
@@ -72,6 +63,15 @@
                         <a class="dropdown-item" href="{% url 'register' %}">Register</a>
                     </li>
                 {% endif %}
+          <li>
+            <a class="dropdown-item" href="{% url 'index' %}" >Home Page</a>
+          </li>
+          <li >
+            <a class="dropdown-item" href="{% url 'snake' %}">Snake</a>
+          </li>
+             <li>
+            <a class="dropdown-item" href="{% url 'flappy' %}">Flappy Square</a>
+          </li>
           </ul>
         </div>
     </nav>
