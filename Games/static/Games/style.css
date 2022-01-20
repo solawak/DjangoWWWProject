@@ -61,3 +61,7 @@ a.hoverable_div {
 #dropdownMenuButton1 {
 	background-color: #0d6efd;
 }
+
+#welcome_tag {
+	color: inherit;
+}
