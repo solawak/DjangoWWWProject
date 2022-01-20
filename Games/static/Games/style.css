@@ -85,3 +85,9 @@ a.hoverable_div {
 #welcome_tag {
 	color: inherit;
 }
+
+.col-sm{
+	flex-direction: column;
+	align-items: center;
+	display: flex;
+}
