@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container-fluid p-3 bg-primary text-white text-center">
-<h1>This is the {{ game_name }} Page.</h1>
+<h1>Turtle Games</h1>
     <nav class="navbar navbar-expand-lg">
         <ul id = "menu1" class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -29,7 +29,7 @@
         <ul id = "menu2" class="navbar-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Hi {{ user.username }}!</a>
+                        <a id="welcome_tag" class="nav-link" href="#" tabindex="-1" aria-disabled="true">Welcome {{ user.username }}!</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
