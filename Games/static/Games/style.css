@@ -26,11 +26,31 @@ body {
 }
 
 .grow img {
-	width: 10em;
+	width: 15em;
 }
+
+@media{
+  .grow {
+	background-color: gray;
+	padding: 0;
+	border-radius: 10px;
+	height: 25em;
+	width: 15em;
+	margin: 5px 1% 5px 1%;
+	float: left;
+	position: relative;
+	transition: height 0.5s;
+	-webkit-transition: height 0.5s;
+	text-align: center;
+	overflow: hidden;
+	transition: 1.5s;
+}
+}
+
+
 .grow:hover {
-  height: 20em;
-  width: 10em;
+  height: 25em;
+  width: 15em;
 }
 
 a.hoverable_div {
