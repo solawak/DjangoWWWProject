@@ -47,12 +47,6 @@ def flappy(request):
     return game_render(request, game_name, game_html)
 
 
-def game3(request):
-    game_name = 'Blank'
-    game_html = 'Games/flappy.html'
-    return game_render(request, game_name, game_html)
-
-
 def register_request(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
